@@ -7,43 +7,57 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div id="git-branches-bg"></div>
+    <!-- User icon and login modal -->
+    <div id="user-menu" style="position: absolute; top: 16px; right: 24px; z-index: 10;">
+      <span id="user-icon" style="cursor:pointer; font-size: 2em;">👤</span>
+      <div id="login-dropdown" style="display:none; position:absolute; right:0; background:#fff; border:1px solid #ccc; padding:10px; box-shadow:0 2px 8px #aaa;">
+        <button id="login-btn">Login</button>
+      </div>
+    </div>
+    <div id="login-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:100; align-items:center; justify-content:center;">
+      <div style="background:#fff; padding:24px; border-radius:8px; min-width:300px;">
+        <h3>Teacher Login</h3>
+        <form id="login-form">
+          <label>Username:<br><input type="text" id="login-username" required></label><br><br>
+          <label>Password:<br><input type="password" id="login-password" required></label><br><br>
+          <button type="submit">Login</button>
+          <button type="button" id="login-cancel">Cancel</button>
+        </form>
+        <div id="login-error" style="color:red; margin-top:10px;"></div>
+      </div>
+    </div>
     <header>
+      <img src="https://octodex.github.com/images/daftpunktocat-guy.gif" alt="School Mascot" style="height:100px; float:left; margin-right:20px; border-radius:10px; background:#fff;" />
       <h1>Mergington High School</h1>
       <h2>Extracurricular Activities</h2>
+      <div id="activities-toolbar" style="margin: 2rem auto 0 auto; display:flex; flex-wrap:wrap; gap:32px; align-items:center; background:#fff; z-index:10; padding:18px 24px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.06); max-width:900px; width:100%; position:relative; min-height:56px;">
+        <label>Category:
+          <select id="category-filter">
+            <option value="">All</option>
+          </select>
+        </label>
+        <label>Sort by:
+          <select id="sort-filter">
+            <option value="name">Name</option>
+            <option value="category">Category</option>
+            <option value="date">Date</option>
+          </select>
+        </label>
+        <label>Search:
+          <input type="text" id="search-filter" placeholder="Search activities..." style="padding:8px 12px; border-radius:4px; border:1px solid #ccc; min-width:120px; max-width:220px;" />
+        </label>
+      </div>
     </header>
 
-    <main>
+    <main class="main-content">
       <section id="activities-container">
-        <h3>Available Activities</h3>
         <div id="activities-list">
           <!-- Activities will be loaded here -->
           <p>Loading activities...</p>
         </div>
       </section>
-
-      <section id="signup-container">
-        <h3>Sign Up for an Activity</h3>
-        <form id="signup-form">
-          <div class="form-group">
-            <label for="email">Student Email:</label>
-            <input type="email" id="email" required placeholder="your-email@mergington.edu" />
-          </div>
-          <div class="form-group">
-            <label for="activity">Select Activity:</label>
-            <select id="activity" required>
-              <option value="">-- Select an activity --</option>
-              <!-- Activity options will be loaded here -->
-            </select>
-          </div>
-          <button type="submit">Sign Up</button>
-        </form>
-        <div id="message" class="hidden"></div>
-      </section>
     </main>
-
-    <footer>
-      <p>&copy; 2023 Mergington High School</p>
-    </footer>
 
     <script src="app.js"></script>
   </body>
